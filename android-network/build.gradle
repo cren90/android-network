@@ -9,7 +9,7 @@ kapt {
     correctErrorTypes = true
 }
 
-ext.library_version='1.0.0'
+ext.library_version='1.0.1'
 
 afterEvaluate {
     publishing {
@@ -71,13 +71,13 @@ dependencies {
     api libs.hilt
     kapt libs.hilt.android.kapt
 
-    implementation libs.bundles.okhttp
-    implementation libs.bundles.retrofit
-    implementation libs.bundles.scarlet
-    implementation libs.bundles.serialization
+    api libs.bundles.okhttp
+    api libs.bundles.retrofit
+    api libs.bundles.scarlet
+    api libs.bundles.serialization
     kapt libs.moshi.kapt
 
-    implementation libs.networkResponseAdapter
+    api libs.networkResponseAdapter
 
     testImplementation libs.bundles.test
     androidTestImplementation libs.bundles.test.instrumentation
