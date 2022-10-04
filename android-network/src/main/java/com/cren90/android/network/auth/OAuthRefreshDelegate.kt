@@ -4,12 +4,11 @@
 
 package com.cren90.android.network.auth
 
-import com.cren90.android.network.auth.AuthTokenRepo
-import com.cren90.android.network.auth.JWTUtil
-import com.cren90.android.network.auth.TokenValidator
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 open class OAuthRefreshDelegate @Inject constructor() {
 
     @Inject

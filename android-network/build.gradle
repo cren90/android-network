@@ -1,5 +1,5 @@
 plugins {
-    id 'android-library'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'maven-publish'
@@ -9,7 +9,7 @@ kapt {
     correctErrorTypes = true
 }
 
-ext.library_version='1.0.1'
+ext.library_version='1.0.2'
 
 afterEvaluate {
     publishing {

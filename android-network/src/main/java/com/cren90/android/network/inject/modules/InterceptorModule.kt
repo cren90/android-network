@@ -6,6 +6,7 @@ package com.cren90.android.network.inject.modules
 
 import com.cren90.android.logging.Logger
 import com.cren90.android.network.AUTHORIZATION_HEADER_KEY
+import com.cren90.android.network.logging.LogLevelProvider
 import com.tinder.scarlet.lifecycle.android.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -20,16 +21,13 @@ class InterceptorModule {
 
     @Provides
     @Singleton
-    fun provideLogInterceptor(logger: Logger): HttpLoggingInterceptor =
+    fun provideLogInterceptor(logger: Logger, logLevelProvider: LogLevelProvider): HttpLoggingInterceptor =
         HttpLoggingInterceptor { message ->
             logger.debug(message, "android-network")
         }.apply {
-
-            if (BuildConfig.DEBUG) {
-                level = HttpLoggingInterceptor.Level.BODY
-            } else {
-                level = HttpLoggingInterceptor.Level.BASIC
-                redactHeader(AUTHORIZATION_HEADER_KEY)
+            level = logLevelProvider.networkLogLevel
+            logLevelProvider.headersToRedact.forEach {
+                redactHeader(it)
             }
         }
 }
